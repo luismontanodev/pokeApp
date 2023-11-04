@@ -6,16 +6,20 @@ import {
 	SearchContainer,
 	SearchInput,
 } from "./styled";
-import { useCallApi } from "../../api/useCallApi";
+import { useFetchApi } from "../../api/useFetchApi";
 import { PokemonTypes } from "../../types/pokemonTypes";
 
 export const Component = () => {
-	const [searchPokemon, setSearchPokemon] = useState<string>("");
-	const [response, setResponse] = useState<PokemonTypes>();
+	const [pokemonName, setPokemonName] = useState<string>("");
+	const [pokemonInfo, setPokemonInfo] = useState<PokemonTypes>();
 
-	const handleSearchPokemon = () => {
-		let result = useCallApi(searchPokemon);
-		console.log(result);
+	const { getAPIData } = useFetchApi();
+
+	const handleSearch = async () => {
+		const result = await getAPIData(pokemonName);
+		setPokemonInfo(result);
+
+		console.log(pokemonInfo);
 	};
 
 	return (
@@ -24,15 +28,19 @@ export const Component = () => {
 				<SearchInput
 					type="text"
 					placeholder="Type a pokemon name..."
-					value={searchPokemon}
-					onChange={(event) => {
-						setSearchPokemon(event.target.value);
-					}}
+					value={pokemonName}
+					onChange={(e) => setPokemonName(e.target.value)}
 				/>
-				<SearchButton onClick={handleSearchPokemon}>Search</SearchButton>
+				<SearchButton onClick={handleSearch}>Search</SearchButton>
 			</SearchContainer>
 
-			<ResultContainer></ResultContainer>
+			<ResultContainer>
+				<h1>{pokemonInfo?.name}</h1>
+				<h1>{pokemonInfo?.abilities[0].ability.name}</h1>
+				<img
+					src={pokemonInfo?.sprites.other["official-artwork"].front_default}
+				/>
+			</ResultContainer>
 		</HomeContainer>
 	);
 };
