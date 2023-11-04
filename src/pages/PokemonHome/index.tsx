@@ -18,8 +18,6 @@ export const Component = () => {
 	const handleSearch = async () => {
 		const result = await getAPIData(pokemonName);
 		setPokemonInfo(result);
-
-		console.log(pokemonInfo);
 	};
 
 	return (
@@ -36,10 +34,12 @@ export const Component = () => {
 
 			<ResultContainer>
 				<h1>{pokemonInfo?.name}</h1>
-				<h1>{pokemonInfo?.abilities[0].ability.name}</h1>
+				{/* <h1>{`Dex number: ${pokemonInfo?.id}`}</h1> */}
 				<img
 					src={pokemonInfo?.sprites.other["official-artwork"].front_default}
 				/>
+				<h1>{pokemonInfo?.types[0].type.name}</h1>
+				{/* <h1>{pokemonInfo?.types[1].type.name}</h1> */}
 			</ResultContainer>
 		</HomeContainer>
 	);
