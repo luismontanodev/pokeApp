@@ -5,6 +5,12 @@ import {
 	SearchButton,
 	SearchContainer,
 	SearchInput,
+	LabelPokemonName,
+	ImagePokemon,
+	ImageContainer,
+	MainInfoContainer,
+	DetailedInfoContainer,
+	DexNumberLabel,
 } from "./styled";
 import { useFetchApi } from "../../api/useFetchApi";
 import { PokemonTypes } from "../../types/pokemonTypes";
@@ -33,13 +39,26 @@ export const Component = () => {
 			</SearchContainer>
 
 			<ResultContainer>
-				<h1>{pokemonInfo?.name}</h1>
-				{/* <h1>{`Dex number: ${pokemonInfo?.id}`}</h1> */}
-				<img
-					src={pokemonInfo?.sprites.other["official-artwork"].front_default}
-				/>
-				<h1>{pokemonInfo?.types[0].type.name}</h1>
-				{/* <h1>{pokemonInfo?.types[1].type.name}</h1> */}
+				<MainInfoContainer>
+					<LabelPokemonName>{pokemonInfo?.name}</LabelPokemonName>
+					<DexNumberLabel>Dex number: {pokemonInfo?.id}</DexNumberLabel>
+					<ImageContainer>
+						<ImagePokemon
+							src={pokemonInfo?.sprites.other["official-artwork"].front_default}
+						/>
+					</ImageContainer>
+				</MainInfoContainer>
+				<DetailedInfoContainer>
+					<h1>Types:</h1>
+					{pokemonInfo?.types.map((type) => {
+						return <p>{type.type.name}</p>;
+					})}
+					<h1>Abilities:</h1>
+
+					{pokemonInfo?.abilities.map((ability) => {
+						return <p>{ability.ability.name}</p>;
+					})}
+				</DetailedInfoContainer>
 			</ResultContainer>
 		</HomeContainer>
 	);

@@ -40,10 +40,52 @@ export const SearchButton = styled.button`
 `;
 
 export const ResultContainer = styled.div`
-	margin-top: 40px;
-	width: 1000px;
+	display: flex;
+	margin-top: 20px;
+	width: 1200px;
 	height: 600px;
 	border-style: solid;
 	border-color: gray;
 	border-radius: 4px;
+`;
+
+export const MainInfoContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	width: 33%;
+	align-items: center;
+	background-color: #feed9a;
+`;
+
+export const DetailedInfoContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	padding-left: 5%;
+	padding-top: 4%;
+	background-color: #f3947c;
+	width: 67%;
+`;
+export const LabelPokemonName = styled.h1`
+	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+	text-align: center;
+`;
+
+export const DexNumberLabel = styled.p`
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 2em;
+	text-align: center;
+`;
+
+export const ImageContainer = styled.div`
+	display: flex;
+	width: 20em;
+	height: 20em;
+`;
+
+export const ImagePokemon = styled.img`
+	width: 20em;
+	height: 20em;
+	border-radius: 11em;
+	background-color: #fdd61e;
 `;
