@@ -5,40 +5,6 @@ export const HomeContainer = styled.div`
 	flex-direction: column;
 	align-items: center;
 	width: 100%;
-	/* height: 100%; */
-`;
-
-export const SearchContainer = styled.div`
-	margin-top: 50px;
-`;
-
-export const SearchInput = styled.input`
-	font-size: 1.3em;
-	width: 15em;
-	height: 1.5em;
-	border-style: solid;
-	border-radius: 4px;
-
-	margin-right: 10px;
-	padding-left: 5px;
-`;
-
-export const SearchButton = styled.button`
-	width: 5em;
-	height: 1.5em;
-
-	font-size: 1.5em;
-	color: white;
-	background-color: #d53f38;
-	border-style: none;
-	border-radius: 4px;
-	cursor: pointer;
-
-	transition: background-color 0.3s;
-
-	&:hover {
-		background-color: #a82a24;
-	}
 `;
 
 export const ResultContainer = styled.div`
@@ -104,6 +70,7 @@ export const LabelPokemonType = styled.p`
 	font-size: 2em;
 	font-family: Arial, Helvetica, sans-serif;
 	color: black;
+	margin: 5px;
 `;
 
 export const LabelTypeName = styled.p`
@@ -112,4 +79,51 @@ export const LabelTypeName = styled.p`
 	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
 		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 	color: brown;
+	background-color: #d4d8d8;
+	text-align: center;
+	border-radius: 8px;
+`;
+
+export const DetailedInfoLabel = styled.p`
+	font-size: 1.5em;
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 5px;
+	font-weight: bold;
+	margin-top: 35px;
+`;
+
+export const AbilityItem = styled.li`
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1.2em;
+	margin: 5px;
+`;
+
+export const StatsList = styled.li`
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1.2em;
+	margin: 5px;
+	list-style: none;
+`;
+
+export const RangeInput = styled.input`
+	&::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		width: 0;
+		height: 0;
+	}
+`;
+
+export const StatsRangeContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+`;
+
+export const StatsListContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	width: 23%;
+`;
+
+export const StatsContainer = styled.div`
+	display: flex;
 `;

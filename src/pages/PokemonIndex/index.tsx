@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Navbar } from "../../components/Navbar";
-import { SearchInfo } from "../../components/SearchInfo";
 import { PokemonTypes } from "../../types/pokemonTypes";
 import { PokemonInfoContainer } from "./styled";
+import { SearchInfo } from "../../components/SearchInfo";
 
 export const Page = () => {
 	const [pokemonInfo, setPokemonInfo] = useState<PokemonTypes>();

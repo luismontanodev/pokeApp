@@ -2,18 +2,21 @@ import React, { useState } from "react";
 import {
 	HomeContainer,
 	ResultContainer,
-	SearchButton,
-	SearchContainer,
-	SearchInput,
 	LabelPokemonName,
 	ImagePokemon,
 	ImageContainer,
 	MainInfoContainer,
 	DetailedInfoContainer,
-	DexNumberLabel,
 	LabelPokemonType,
 	LabelTypeName,
 	TypesContainer,
+	AbilityItem,
+	RangeInput,
+	DetailedInfoLabel,
+	StatsRangeContainer,
+	StatsList,
+	StatsListContainer,
+	StatsContainer,
 } from "./styled";
 
 import { PokemonTypes } from "../../types/pokemonTypes";
@@ -43,16 +46,37 @@ export const Component = (props: Props) => {
 					</TypesContainer>
 				</MainInfoContainer>
 				<DetailedInfoContainer>
-					<h1>Abilities:</h1>
+					<DetailedInfoLabel>Abilities:</DetailedInfoLabel>
 
 					{pokemonInfo?.abilities.map((ability) => {
-						return <li>{ability.ability.name}</li>;
+						return <AbilityItem>{ability.ability.name}</AbilityItem>;
 					})}
 
-					<h1>Base stats</h1>
-					{pokemonInfo?.stats.map((stat) => {
-						return <li>{`${stat.stat.name}: ${stat.base_stat}`}</li>;
-					})}
+					<DetailedInfoLabel>Base stats</DetailedInfoLabel>
+					<StatsContainer>
+						<StatsListContainer>
+							{pokemonInfo?.stats.map((stat) => {
+								return (
+									<StatsList>{`${stat.stat.name}: ${stat.base_stat}`}</StatsList>
+								);
+							})}
+						</StatsListContainer>
+						<StatsRangeContainer>
+							{pokemonInfo?.stats.map((stat) => {
+								return (
+									<StatsList>
+										<RangeInput
+											type="range"
+											min="0"
+											max="200"
+											value={stat.base_stat}
+											disabled={true}
+										/>
+									</StatsList>
+								);
+							})}
+						</StatsRangeContainer>
+					</StatsContainer>
 				</DetailedInfoContainer>
 			</ResultContainer>
 		</HomeContainer>
