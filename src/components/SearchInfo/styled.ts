@@ -1,35 +1,22 @@
 import styled from "styled-components";
+import { Link as LinkRouter } from "react-router-dom";
 
-export const HomeContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: 100%;
-`;
-
-export const ResultContainer = styled.div`
-	display: flex;
-	margin-top: 2%;
-	width: 80%;
-	height: 75vh;
-	box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
-		rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+export const LinkToLocation = styled(LinkRouter)`
+	font-family: Arial, Helvetica, sans-serif;
 `;
 
 export const MainInfoContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 33%;
-	background-color: white;
+	width: 40%;
 `;
 
-export const DetailedInfoContainer = styled.div`
+export const AbilitiesAndStatsContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	padding-left: 5%;
 	padding-top: 4%;
-	background-color: white;
 	width: 67%;
 `;
 export const LabelPokemonName = styled.h1`
@@ -121,9 +108,23 @@ export const StatsRangeContainer = styled.div`
 export const StatsListContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	width: 23%;
+	width: 30%;
 `;
 
 export const StatsContainer = styled.div`
 	display: flex;
+`;
+
+export const ShinyFormContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+
+	width: 20%;
+	padding-top: 5%;
+	padding-right: 10%;
+`;
+
+export const DataContainer = styled.div`
+	display: flex;
+	width: 100%;
 `;

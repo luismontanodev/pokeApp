@@ -1,12 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import {
-	HomeContainer,
-	ResultContainer,
 	LabelPokemonName,
 	ImagePokemon,
 	ImageContainer,
 	MainInfoContainer,
-	DetailedInfoContainer,
 	LabelPokemonType,
 	LabelTypeName,
 	TypesContainer,
@@ -17,9 +14,15 @@ import {
 	StatsList,
 	StatsListContainer,
 	StatsContainer,
+	AbilitiesAndStatsContainer,
+	ShinyFormContainer,
+	DataContainer,
+	LinkToLocation,
 } from "./styled";
 
 import { PokemonTypes } from "../../types/pokemonTypes";
+import { ResultContainer } from "../ResultContainer";
+import { HomeContainer } from "../HomeContainer";
 
 interface Props {
 	pokemonInfo: PokemonTypes | undefined;
@@ -45,39 +48,52 @@ export const Component = (props: Props) => {
 						})}
 					</TypesContainer>
 				</MainInfoContainer>
-				<DetailedInfoContainer>
-					<DetailedInfoLabel>Abilities:</DetailedInfoLabel>
+				<DataContainer>
+					<AbilitiesAndStatsContainer>
+						<DetailedInfoLabel>Abilities:</DetailedInfoLabel>
 
-					{pokemonInfo?.abilities.map((ability) => {
-						return <AbilityItem>{ability.ability.name}</AbilityItem>;
-					})}
+						{pokemonInfo?.abilities.map((ability) => {
+							return <AbilityItem>{ability.ability.name}</AbilityItem>;
+						})}
 
-					<DetailedInfoLabel>Base stats</DetailedInfoLabel>
-					<StatsContainer>
-						<StatsListContainer>
-							{pokemonInfo?.stats.map((stat) => {
-								return (
-									<StatsList>{`${stat.stat.name}: ${stat.base_stat}`}</StatsList>
-								);
-							})}
-						</StatsListContainer>
-						<StatsRangeContainer>
-							{pokemonInfo?.stats.map((stat) => {
-								return (
-									<StatsList>
-										<RangeInput
-											type="range"
-											min="0"
-											max="200"
-											value={stat.base_stat}
-											disabled={true}
-										/>
-									</StatsList>
-								);
-							})}
-						</StatsRangeContainer>
-					</StatsContainer>
-				</DetailedInfoContainer>
+						<DetailedInfoLabel>Base stats</DetailedInfoLabel>
+						<StatsContainer>
+							<StatsListContainer>
+								{pokemonInfo?.stats.map((stat) => {
+									return (
+										<StatsList>{`${stat.stat.name}: ${stat.base_stat}`}</StatsList>
+									);
+								})}
+							</StatsListContainer>
+							<StatsRangeContainer>
+								{pokemonInfo?.stats.map((stat) => {
+									return (
+										<StatsList>
+											<RangeInput
+												type="range"
+												min="0"
+												max="200"
+												value={stat.base_stat}
+												disabled={true}
+											/>
+										</StatsList>
+									);
+								})}
+							</StatsRangeContainer>
+						</StatsContainer>
+					</AbilitiesAndStatsContainer>
+					<ShinyFormContainer>
+						<h1>shiny form</h1>
+						<img
+							src={pokemonInfo?.sprites.other["official-artwork"].front_shiny}
+							alt=""
+						/>
+
+						<LinkToLocation to={`/location/${pokemonInfo?.id}`}>
+							See location in game
+						</LinkToLocation>
+					</ShinyFormContainer>
+				</DataContainer>
 			</ResultContainer>
 		</HomeContainer>
 	);
